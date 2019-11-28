@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light nav-center">
-  <a class="navbar-brand" href="#!/home/12/1">troll<span class="font-weight-bold">Eyes</span></a>
+  <a class="navbar-brand">troll<span class="font-weight-bold">Eyes</span></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -94,7 +94,7 @@
     <div class="conection">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" ng-show="authStatus!=200" ng-class="{'active': controller=='login'}">
-          <a class="nav-link" href="#!/login">Iniciar Sesión <i class="fas fa-sign-in-alt"></i></a>
+          <a class="nav-link" href="#!/login">Iniciar Sesión &#9094;</a>
         </li>
         <li class="nav-item" ng-show="authStatus==200"
           ng-class="{'active':(controller=='usuarioviewController||usuarioViewPerfilController')}">
@@ -103,11 +103,10 @@
         </li>
 
         <li class="nav-item" ng-class="{'active': controller=='logout'}"></li>
-        <a class="nav-link" ng-show="authStatus==200" href="#!/logout"><span class="logout">Cerrar Sesión </span><i
-            class="fas fa-sign-out-alt"></i></a>
+        <a class="nav-link" ng-show="authStatus==200" href="#!/logout"><span class="logout">Cerrar Sesión</span><i></i>&#9211;</a>
         </li>
         <li class="nav-item" ng-show="authLevel.id != 1" ng-class="{'active':(controller=='carritoPlistController')}">
-          <a class="nav-link" href="#!/carrito/plist"><i class="fas fa-shopping-cart"></i></a>
+          <a class="nav-link" href="#!/carrito/plist"><i>&#128722;</i></a>
         </li>
       </ul>
     </div>

@@ -268,3 +268,7 @@ section.container-posts {
 .carrito{
     background-image: url(carro.png);
 }
+
+.btn dropdown-toggle{
+    color: purple !important;
+}
