@@ -1,0 +1,42 @@
+<ng-include src="'app/menu.html'"></ng-include>
+<div class="header shadow">
+    <h1><span class="font-weight-bold">Vista de post</span></h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form name="userForm" ng-show="!fallo&&!hecho">
+                <div class="form-group row">
+                    <label for="titulo" class="col-sm-2 col-form-label" ng-class="{'hidden': session==false}">Id:</label>
+                    <div class="col-sm-10" ng-class="{'hidden': session==false}">
+                        <p>{{id}}</p>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="titulo" class="col-sm-2 col-form-label" ng-class="{'hidden': session==false}">Titulo:</label>
+                    <div class="col-sm-10">
+                        <h2 class="font-weight-bold">{{titulo}}</h2>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="cuerpo" class="col-sm-2 col-form-label" ng-class="{'hidden': session==false}">Cuerpo:</label>
+                    <div class="col-sm-10">
+                        <p>{{cuerpo}}</p>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="etiquetas" class="col-sm-2 col-form-label" ng-class="{'hidden': session==false}">Fecha:</label>
+                    <div class="col-sm-10">
+                        <h6>{{fecha | stringToDate | date : "dd/MM/yyyy"}}</h6>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="etiquetas" class="col-sm-2 col-form-label" ng-class="{'hidden': session==false}">Etiquetas:</label>
+                    <div class="col-sm-10">
+                        <h6>{{etiquetas}}</h6>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

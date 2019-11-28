@@ -1,0 +1,43 @@
+<ng-include src="'app/menu.html'"></ng-include>
+<div class="header shadow">
+    <h1><span class="font-weight-bold">&#128491; ¡Bienvenid@ a tu perfil, @{{authUsername}}!</span></h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form>
+                <div class="row form-group text-center mx-auto mt-5 table-responsive">
+                    <table class="table table-striped text-center">
+                        <tr ng-show="authStatus==200 && authLevel.id == 1">
+                            <th>ID</th>
+                            <td class="align-middle">{{authid}}</td>
+                        </tr>
+                        <tr>
+                            <th>Dni</th>
+                            <td class="align-middle">{{authdni}}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre</th>
+                            <td class="align-middle">{{authnombre}}</td>
+                        </tr>
+                        <tr>
+                            <th>Primer apellido</th>
+                            <td class="align-middle">{{authapellido1}}</td>
+                        </tr>
+                        <tr>
+                            <th>Segundo apellido</th>
+                            <td class="align-middle">{{authapellido2}}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre de usuario</th>
+                            <td class="align-middle">{{authUsername}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="text-center mt-5">
+                    <button type="button" class="btn btn-danger" ng-click="volver()">Volver atrás</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

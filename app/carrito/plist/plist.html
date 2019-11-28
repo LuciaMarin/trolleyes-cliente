@@ -1,0 +1,41 @@
+<ng-include src="'app/menu.html'"></ng-include>
+<div class="header shadow">
+    <h1><span class="font-weight-bold">Artículos en el carrito</span></h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="wrapper">
+                <table class="table">
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Eliminar</th>
+                    </tr>
+                    <tr ng-repeat="compra in pagina">
+             
+                        <td><img width="150" height="100" ng-src={{compra.producto_obj.imagen}}"></td>
+                        <td>{{compra.producto_obj.descripcion}}</td>
+                        <td>{{compra.cantidad}}</td>
+                        <td>{{compra.producto_obj.precio}}</td>
+                        <th><a href="#!/carrito/remove/{{compra.producto_obj.id}}"><i class="fas fa-times"></i></a></th>
+                    </tr>
+                </table>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="button" class="btn btn-primary" ng-click="buy()">Comprar</button>
+                    </div>
+                </div>
+                <div ng-show="!fallo&&hecho&&compraRealizada">
+                        <div class="alert alert-success text-center" role="alert">
+                          <h2>Compra realizada.</h2>
+                          <button class="btn btn-primary" ng-click="cerrar()">Cerrar</button>
+                          <button class="btn btn-primary" ng-click="volver()">Volver</button>
+                        </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>

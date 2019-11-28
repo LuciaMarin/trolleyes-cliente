@@ -1,0 +1,30 @@
+<ng-include src="'app/menu.html'"></ng-include>
+<div class="header shadow">
+  <h1><span class="font-weight-bold context-menu">troll<span class="color-b">Eyes</span></span></h1>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <section class="container-posts">
+        <div class="card" ng-repeat="fila in pagina">
+          <img ng-src="{{fila.imagen}}">
+          <div class="card-body">
+            <h2 class="card-title">{{fila.descripcion}}</h5>
+              <p class="card-text">{{fila.codigo}}</p>
+              <p class="card-text">Precio: {{fila.precio}} €</p>
+              <a href="#!/producto/view/{{fila.id}}" class="btn btn-outline-dark">Añadir al carrito</a>
+          </div>
+        </div>
+      </section>
+    </div>
+    <nav aria-label="Paginación">
+      <ul class="pagination">
+        <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
+          ng-repeat="p in botonera track by $index">
+          <a class="page-link" ng-if="p != '...'" href="#!/home/{{ rppActual }}/{{ p }}">{{p}}</a>
+          <span class="page-link" ng-if="p == '...'">{{ p }}</span>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
