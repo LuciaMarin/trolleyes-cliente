@@ -1,6 +1,6 @@
 <ng-include src="'app/menu.html'"></ng-include>
 <div class="header shadow">
-    <h1><span class="font-weight-bold">&#128491; ¡Bienvenid@ a tu perfil, @{{authUsername}}!</span></h1>
+    <h1><span class="font-weight-bold">Este es el perfil de @{{authUsername}} &#128513;</span></h1>
 </div>
 <div class="container">
     <div class="row">
@@ -13,7 +13,7 @@
                             <td class="align-middle">{{authid}}</td>
                         </tr>
                         <tr>
-                            <th>Dni</th>
+                            <th>DNI</th>
                             <td class="align-middle">{{authdni}}</td>
                         </tr>
                         <tr>
@@ -32,10 +32,14 @@
                             <th>Nombre de usuario</th>
                             <td class="align-middle">{{authUsername}}</td>
                         </tr>
+                        <tr ng-show="authLevel.id != 1">
+                            <th>Mis facturas</th>
+                            <td class="align-middle"><a href="#!/factura/plist/10/1/{{authid}}">{{authFactura}}</a></td>
+                        </tr>
                     </table>
                 </div>
                 <div class="text-center mt-5">
-                    <button type="button" class="btn btn-danger" ng-click="volver()">Volver atrás</button>
+                    <button type="button" class="btn btn-outline-dark" ng-click="volver()">Volver atrás</button>
                 </div>
             </form>
         </div>

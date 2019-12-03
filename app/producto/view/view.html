@@ -1,6 +1,6 @@
 <ng-include src="'app/menu.html'"></ng-include>
 <div class="header shadow">
-    <h1><i class="fas fa-box"></i> Vista de producto</h1>
+    <h1>&#128441; Vista de producto</i></h1>
 </div>
 <div class="container">
     <div class="row">
@@ -25,9 +25,9 @@
                                 <p>{{id}}</p>
                             </div>
                         </div>
-
+                        
                         <div class="form-group row">
-                            <label for="codigo" class="col-sm-3 col-form-label"><strong>Codigo:</strong></label>
+                            <label for="codigo" class="col-sm-3 col-form-label"><strong>Código:</strong></label>
                             <div class="col-sm-9 col-form-label">
                                 <p class="font-weight-bold">{{codigo}}</p>
                             </div>
@@ -46,32 +46,32 @@
                                 <p>{{tipo_producto_obj.descripcion}}</p>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div ng-show="authLevel != 1 && existencias>0" class="form-group row">
 
-                            <label for="cantidad" class="col-sm-3 col-form-label"><strong>Cantidad:</strong></label>
+                            <label   for="cantidad" class="col-sm-3 col-form-label"><strong>Cantidad:</strong></label>
                             <div class="col-sm-9 col-form-label">
                                 <div class="cantidad_container">
                                     <div class="btn-group mas-menos">
-                                        <button class="btn btn-secondary2 quantify-modify quantify-sub"
+                                        <button class="btn btn-outline-dark quantify-modify quantify-sub"
                                             ng-click="menos()"><i class="fas fa-minus"></i></button>
                                         <input id="article-quantity" class="form-control input-units" type="text"
                                             name="cantidad" value="{{cantidad}}" ng-model="cantidad" data-max="9999"
                                             autocomplete="off" data-refubrished="false" data-digital="false">
-                                        <button class="btn btn-secondary2 quantify-modify quantify-add"
+                                        <button class="btn btn-outline-dark quantify-modify quantify-add"
                                             ng-click="mas()"><i class="fas fa-plus"></i></button>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-                        <div class="text-center">
-                            <button type="button" class="btn btn-primary" ng-click="add()">Añadir al carrito</button>
+                        <div ng-show="authLevel != 1" class="text-center">
+                            <button type="button" ng-show="existencias>0" class="btn btn-outline-dark" ng-click="add()">Añadir al carrito</button>
+                            <div ng-show="existencias==0" class="alert">Fuera de stock</div>
+                            <button class="btn btn-outline-dark" ng-click="volver()">Volver</button>
                         </div>
+                      
                     </div>
-
                 </div>
-
-
             </form>
         </div>
     </div>

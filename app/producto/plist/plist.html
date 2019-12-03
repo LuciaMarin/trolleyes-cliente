@@ -10,7 +10,7 @@
                     <form class="form-inline">
                         <input class="form-control mr-sm-2" type="search" placeholder="Buscar" ng-model="word"
                             aria-label="Search">
-                        <button class="btn btn-outline-dark" type="submit"
+                        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"
                             ng-click="search()">Buscar</button>
                     </form>
                 </nav>
@@ -36,10 +36,10 @@
                         <div>
                             <th>Id <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <a href="#!/producto/plist/{{ rppActual }}/{{ paginaActual }}/id/asc"
-                                        class="btn btn-primary btn-sm" role="button" aria-pressed="true">
+                                        class="btn btn-outline-dark" role="button" aria-pressed="true">
                                         <i class="fas fa-sort-up"></i></i></a>
                                     <a href="#!/producto/plist/{{ rppActual }}/{{ paginaActual }}/id/desc"
-                                        class="btn btn-primary btn-sm" role="button" aria-pressed="true">
+                                        class="btn btn-outline-dark" role="button" aria-pressed="true">
                                         <i class="fas fa-sort-down"></i></i></a>
                                 </div>
                             </th>
@@ -47,10 +47,10 @@
                         <div>
                             <th>Código <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <a href="#!/producto/plist/{{ rppActual }}/{{ paginaActual }}/codigo/asc"
-                                        class="btn btn-primary btn-sm" role="button" aria-pressed="true">
+                                        class="btn btn-outline-dark role="button" aria-pressed="true">
                                         <i class="fas fa-sort-up"></i></i></a>
                                     <a href="#!/producto/plist/{{ rppActual }}/{{ paginaActual }}/codigo/desc"
-                                        class="btn btn-primary btn-sm" role="button" aria-pressed="true">
+                                        class="btn btn-outline-dark" role="button" aria-pressed="true">
                                         <i class="fas fa-sort-down"></i></i></a>
                                 </div>
                             </th>
@@ -58,10 +58,10 @@
                         <div>
                             <th>Existencias <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <a href="#!/producto/plist/{{ rppActual }}/{{ paginaActual }}/existencias/asc"
-                                        class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i
+                                        class="btn btn-outline-dark" role="button" aria-pressed="true"><i
                                             class="fas fa-sort-up"></i></i></a>
                                     <a href="#!/producto/plist/{{ rppActual }}/{{ paginaActual }}/existencias/desc"
-                                        class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i
+                                        class="btn btn-outline-dark" role="button" aria-pressed="true"><i
                                             class="fas fa-sort-down"></i></i></a>
                                 </div>
                             </th>
@@ -69,10 +69,21 @@
                         <div>
                             <th>Precio <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <a href="#!/producto/plist/{{ rppActual }}/{{ paginaActual }}/precio/asc"
-                                        class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i
+                                        class="btn btn-outline-dark" role="button" aria-pressed="true"><i
                                             class="fas fa-sort-up"></i></i></a>
                                     <a href="#!/producto/plist/{{ rppActual }}/{{ paginaActual }}/precio/desc"
-                                        class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i
+                                        class="btn btn-outline-dark" role="button" aria-pressed="true"><i
+                                            class="fas fa-sort-down"></i></i></a>
+                                </div>
+                            </th>
+                        </div>
+                        <div>
+                            <th>Compras <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <a href="#!/producto/plist/{{ rppActual }}/{{ paginaActual }}/precio/asc"
+                                        class="btn btn-outline-dark" role="button" aria-pressed="true"><i
+                                            class="fas fa-sort-up"></i></i></a>
+                                    <a href="#!/producto/plist/{{ rppActual }}/{{ paginaActual }}/precio/desc"
+                                        class="btn btn-outline-dark" role="button" aria-pressed="true"><i
                                             class="fas fa-sort-down"></i></i></a>
                                 </div>
                             </th>
@@ -80,10 +91,10 @@
                         <div>
                             <th>Tipo producto <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <a href="#!/producto/plist/{{ rppActual }}/{{ paginaActual }}/tipo_producto_obj.descripcion/asc"
-                                        class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i
+                                        class="btn btn-outline-dark" role="button" aria-pressed="true"><i
                                             class="fas fa-sort-up"></i></i></a>
                                     <a href="#!/producto/plist/{{ rppActual }}/{{ paginaActual }}/tipo_producto_obj.descripcion/desc"
-                                        class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i
+                                        class="btn btn-outline-dark" role="button" aria-pressed="true"><i
                                             class="fas fa-sort-down"></i></i></a>
                                 </div>
 
@@ -96,6 +107,7 @@
                         <td>{{fila.codigo}}</td>
                         <td>{{fila.existencias}}</td>
                         <td>{{fila.precio}} €</td>
+                        <td><a href="#!/compra/plist/10/1/{{fila.id}}/producto">{{fila.link_compra}}</a></td>
                         <td><a
                                 href="#!/tipoproducto/view/{{fila.tipo_producto_obj.id}}">{{fila.tipo_producto_obj.descripcion}}</a>
                         </td>
@@ -113,7 +125,7 @@
                         <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
                             ng-repeat="p in botonera track by $index">
                             <a class="page-link" ng-if="p != '...'"
-                                href="#!/post/plist/{{ rppActual }}/{{ p }}">{{p}}</a>
+                                href="#!/producto/plist/{{ rppActual }}/{{ p }}">{{p}}</a>
                             <span class="page-link" ng-if="p == '...'">{{ p }}</span>
                         </li>
                     </ul>

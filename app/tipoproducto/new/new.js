@@ -1,7 +1,7 @@
 'use strict';
 var miControlador = miModulo.controller('tipoproductoNewController',
-    function ($scope, $http, auth, promesasService) {
-        if (auth.data.status != 200) {
+    function ($scope, $http, auth, promesasService, $location) {
+        if (auth.data.status != 200 || auth.data.message.tipo_usuario_obj.id == 2) {
             $location.path('/login');
         } else {
             $scope.authStatus = auth.data.status;

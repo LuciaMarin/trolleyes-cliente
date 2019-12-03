@@ -1,12 +1,13 @@
 'use strict';
-var miControlador = miModulo.controller('tipoproductoUpdateController',
-    function ($scope, $http, $routeParams, promesasService) {
+var miControlador = miModulo.controller('tipoproductoEditController',
+    function ($scope, $routeParams, promesasService,auth,$location) {
         if (auth.data.status != 200) {
             $location.path('/login');
         } else {
             $scope.authStatus = auth.data.status;
             $scope.authUsername = auth.data.message.login;
             $scope.authLevel = auth.data.message.tipo_usuario_obj;
+            $scope.controller = "tipoproductoEditController";
         }
 
         $scope.formulario = true;
@@ -17,33 +18,37 @@ var miControlador = miModulo.controller('tipoproductoUpdateController',
             .then(function (response) {
                 $scope.status = response.status;
                 $scope.id = response.data.message.id;
-                $scope.desc = response.data.message.desc;
+                $scope.descripcion = response.data.message.descripcion;
             }, function (response) {
-                $scope.status = response.status;
-                $scope.ajaxData = response.data.message || 'Request failed';
+                $scope.status = response.data.status;
+                $scope.falloMensaje = response.data.message;
             });
 
         $scope.volver = function () {
             window.history.back();
         };
-
+        
+       
         $scope.editar = function () {
-            var json = {
+            const datos = {
                 id: $scope.id,
-                desc: $scope.desc
+                descripcion: $scope.descripcion
+            }
+            var jsonToSend = {
+                data: JSON.stringify(datos)
             };
             promesasService.ajaxUpdate('tipo_producto', { params: jsonToSend })
                 .then(function (response) {
-                    $scope.status = response.status;
-                    $scope.ajaxData = response.data.message;
-                    if ($scope.status === 200) {
-                        $scope.formulario = false;
-                        $scope.botones = false;
-                        $scope.correcto = true;
+                    if (response.data.status != 200) {
+                        $scope.fallo = true;
+                        $scope.falloMensaje = response.data.message;
+                    } else {
+                        $scope.fallo = false;
+                        $scope.hecho = true;
                     }
                 }, function (response) {
-                    $scope.status = response.status;
-                    $scope.ajaxData = response.data.message || 'Request failed';
+                    $scope.fallo = true;
+                    $scope.hecho = true;
                 });
         };
     }

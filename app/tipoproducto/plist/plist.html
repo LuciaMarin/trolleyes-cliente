@@ -1,6 +1,6 @@
 <ng-include src="'app/menu.html'"></ng-include>
 <div class="header shadow">
-    <h1><span class="font-weight-bold"><i class="fas fa-boxes"></i> Lista de tipo producto</span></h1>
+    <h1><span class="font-weight-bold">&#128063; Lista de tipo producto</span></h1>
 </div>
 <div class="container">
     <div class="row">
@@ -10,7 +10,7 @@
                     <form class="form-inline">
                         <input class="form-control mr-sm-2" type="search" placeholder="Buscar" ng-model="word"
                             aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+                        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"
                             ng-click="search()">Buscar</button>
                     </form>
                 </nav>
@@ -36,21 +36,21 @@
                         <div>
                             <th>Id <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <a href="#!/tipoproducto/plist/{{ rppActual }}/{{ paginaActual }}/id/asc"
-                                        class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i
+                                        class="btn btn-outline-dark" role="button" aria-pressed="true"><i
                                             class="fas fa-sort-up"></i></i></a>
                                     <a href="#!/tipoproducto/plist/{{ rppActual }}/{{ paginaActual }}/id/desc"
-                                        class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i
+                                        class="btn btn-outline-dark" role="button" aria-pressed="true"><i
                                             class="fas fa-sort-down"></i></i></a>
                                 </div>
                             </th>
                         </div>
                         <div>
-                            <th>descripcion <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <th>Descripción <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <a href="#!/tipoproducto/plist/{{ rppActual }}/{{ paginaActual }}/descripcion/asc"
-                                        class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i
+                                        class="btn btn-outline-dark" role="button" aria-pressed="true"><i
                                             class="fas fa-sort-up"></i></i></a>
                                     <a href="#!/tipoproducto/plist/{{ rppActual }}/{{ paginaActual }}/descripcion/desc"
-                                        class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i
+                                        class="btn btn-outline-dark" role="button" aria-pressed="true"><i
                                             class="fas fa-sort-down"></i></i></a>
                                 </div>
                             </th>
