@@ -272,3 +272,7 @@ section.container-posts {
 .btn dropdown-toggle{
     color: purple !important;
 }
+
+.buscar {
+    background-color: pink !important;
+}
