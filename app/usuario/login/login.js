@@ -13,7 +13,34 @@ var miControlador = miModulo.controller(
             $scope.authLevel =  auth.data.message.tipo_usuario_obj;
            
         }
-
+        /*Notifis mediante lista de carrito*/
+        promesasService.ajaxListCarrito()
+            .then(function successCallback(response) {
+                if (response.data.status != 200) {
+                    $scope.falloMensaje = response.data.message;
+                } else {
+                    $scope.status = response.data.status;
+                    $scope.pagina = response.data.message;
+                    if (response.data.message) {
+                        if (response.data.message.length == 0) {
+                            $scope.count = 0;
+                        } else {
+                            $scope.count = response.data.message.length;
+                        }
+                    } else {
+                        $scope.count = 0;
+                    }
+                }
+            }, function (response) {
+                $scope.mensaje = "Ha ocurrido un error";
+            });
+        function isEmpty(obj) {
+            for(var key in obj) {
+                if(obj.hasOwnProperty(key))
+                    return false;
+            }
+            return true;
+        };
         $scope.login = function () {
             if ($scope.username != undefined && $scope.password != undefined) {
                         promesasService.ajaxLogin($scope.username, $scope.password)
@@ -36,7 +63,7 @@ var miControlador = miModulo.controller(
                             });
             } else {
                 $scope.fallo = true;
-                $scope.falloMensaje = "Los campos no pueden estar vacios. ";
+                $scope.falloMensaje = "Los campos no pueden estar vacios.";
             }
         }
     }

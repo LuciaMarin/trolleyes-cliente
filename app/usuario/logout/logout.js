@@ -1,8 +1,6 @@
 miModulo.controller(
     "logout",
-
     function ($scope, $location, promesasService, auth) {
-
         if ($scope.authStatus != 200) {
             $location.path('/login');
         } else {

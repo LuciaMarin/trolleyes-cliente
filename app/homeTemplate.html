@@ -7,12 +7,20 @@
     <div class="col-md-12">
       <section class="container-posts">
         <div class="card" ng-repeat="fila in pagina">
-          <img ng-src="{{fila.imagen}}">
           <div class="card-body">
+            <div class="card_img">
+              <a class="card_img_link" href="#!/producto/view/{{fila.id}}">
+                <img class="image" ng-src="{{fila.imagen}}">
+              </a>
+            </div>
             <h2 class="card-title">{{fila.descripcion}}</h5>
               <p class="card-text">{{fila.codigo}}</p>
               <p class="card-text">Precio: {{fila.precio}} €</p>
-              <a href="#!/producto/view/{{fila.id}}" class="btn btn-outline-dark">Añadir al carrito</a>
+              <a name="addCarrito" ng-click="add(fila.id)" class="btn btn-outline-dark"
+                ng-show="authLevel.id != 1">Añadir al carrito</a>
+              <a href="#!/producto/edit/{{fila.id}}" class="btn btn-outline-dark"
+                ng-show="authLevel.id == 1">Editar Producto</a>
+
           </div>
         </div>
       </section>

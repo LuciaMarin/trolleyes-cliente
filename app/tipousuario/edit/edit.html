@@ -1,6 +1,6 @@
 <ng-include src="'app/menu.html'"></ng-include>
 <div class="header shadow">
-    <h1><span class="font-weight-bold"><i class="fas fa-user-tag"></i> Editar tipo de usuario</span></h1>
+    <h1><span class="font-weight-bold">&#128491; Editar tipo de usuario</span></h1>
 </div>
 <div class="container">
     <div class="row">
@@ -19,39 +19,39 @@
                             ng-class="{ 'is-invalid' :!userForm.descripcion.$valid && !userForm.descripcion.$pristine}"
                             name="descripcion" ng-required="true" value="{{descripcion}}" />
                         <div class="invalid-feedback" ng-show="userForm.descripcion.$invalid">
-                            La descripción no puede estar vacio.
+                            El apartado de la descripción no puede estar vacio.
                         </div>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col text-center">
-                        <button type="button" class="btn btn-primary" ng-click="modificar()">Actualizar los
+                        <button type="button" class="btn btn-outline-dark" ng-click="editar()">Actualizar los
                             datos</button>
                     </div>
                 </div>
             </form>
             <div ng-show="!fallo&&hecho">
                 <div class="alert alert-success text-center" role="alert">
-                    <h2>El tipo de usuario se ha actualizado con éxito</h2>
-                    <button class="btn btn-primary" ng-click="cerrar()">Cerrar</button>
-                    <button class="btn btn-primary" ng-click="volver()">Volver</button>
+                    <h2>El tipo de usuario se ha actualizado con éxito.</h2>
+                    <button class="btn btn-outline-dark" ng-click="cerrar()">Cerrar</button>
+                    <button class="btn btn-outline-dark" ng-click="volver()">Volver</button>
                 </div>
             </div>
             <div ng-show="fallo&&hecho">
                 <div class="alert alert-danger text-center" role="alert">
-                    <h2>Ha ocurrido un error al actualizar el tipo de usuario</h2>
+                    <h2>Ha ocurrido un error al actualizar el tipo de usuario.</h2>
                     <p ng-show="falloMensaje!=''">{{falloMensaje}}</p>
-                    <button class="btn btn-primary" ng-click="cerrar()">Cerrar</button>
-                    <button class="btn btn-primary" ng-click="volver()">Volver</button>
+                    <button class="btn btn-outline-dark" ng-click="cerrar()">Cerrar</button>
+                    <button class="btn btn-outline-dark" ng-click="volver()">Volver</button>
                 </div>
             </div>
             <div ng-show="fallo&&!hecho">
                 <div class="alert alert-danger text-center" role="alert">
-                    <h2>Ha habido un error al recibir datos del tipo de usuario desde el servidor</h2>
+                    <h2>Ha ocurrido un error al recibir datos del tipo de usuario desde el servidor.</h2>
                     <p ng-show="falloMensaje!=''">{{falloMensaje}}</p>
-                    <button class="btn btn-primary" ng-click="cerrar()">Cerrar</button>
-                    <button class="btn btn-primary" ng-click="volver()">Volver</button>
+                    <button class="btn btn-outline-dark" ng-click="cerrar()">Cerrar</button>
+                    <button class="btn btn-outline-dark" ng-click="volver()">Volver</button>
                 </div>
             </div>
         </div>

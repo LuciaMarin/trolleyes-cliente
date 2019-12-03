@@ -1,13 +1,12 @@
 var miControlador = miModulo.controller(
     "usuarioEditController",
-    function ($scope, $http, $routeParams, promesasService, auth) {
-        if (auth.data.status != 200) {
+    function ($scope, $http, $routeParams, promesasService, auth, $location) {
+        if (auth.data.status != 200 || auth.data.message.tipo_usuario_obj.id == 2) {
             $location.path('/login');
         } else {
             $scope.authStatus = auth.data.status;
             $scope.authUsername = auth.data.message.login;
-            $scope.authLevel = auth.data.message.tipo_usuario_obj;
-            $scope.controller = "usuarioEditController";
+            $scope.authLevel =  auth.data.message.tipo_usuario_obj;
         }
 
         $scope.id = $routeParams.id;
@@ -103,10 +102,10 @@ var miControlador = miModulo.controller(
         }
 
         $scope.cerrar = function () {
-            $location.path('/home/10/1');
+            $location.path('/home/12/1');
         };
 
         $scope.reset();
-
+        
     }
 )

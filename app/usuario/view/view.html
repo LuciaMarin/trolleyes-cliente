@@ -1,6 +1,9 @@
+
+
+
 <ng-include src="'app/menu.html'"></ng-include>
 <div class="header shadow">
-    <h1><span class="font-weight-bold"><i class="fas fa-user"></i> Este es el usuario @{{login}}</span></h1>
+    <h1><span class="font-weight-bold">&#128491; Datos del usuario @{{login}}</span></h1>
 </div>
 <div class="container">
     <div class="row">
@@ -46,6 +49,14 @@
                         <h6>{{login}}</h6>
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label for="tipo_usuario_obj" class="col-sm-2 col-form-label"
+                        ng-class="{'hidden': session==false}">Tipo de usuario:</label>
+                    <div class="col-sm-10">
+                        <h6>{{tipo_usuario_obj}}</h6>
+                    </div>
+                </div>
+                <button class="btn btn-outline-dark" ng-click="volver()">Volver</button>
             </form>
         </div>
     </div>

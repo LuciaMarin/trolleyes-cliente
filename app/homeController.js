@@ -4,9 +4,11 @@ var miControlador = miModulo.controller(
         $scope.authStatus = auth.data.status;
         $scope.authUsername = auth.data.message.login;
         $scope.authLevel = auth.data.message.tipo_usuario_obj;
+        $scope.authid = auth.data.message.id;
         $scope.controller = "homeController";
         $scope.campo = $routeParams.order;
         $scope.direction = $routeParams.direction;
+        
 
         if (!$routeParams.page) {
             $scope.paginaActual = 1;
@@ -40,7 +42,7 @@ var miControlador = miModulo.controller(
                 }
             }, function () {
             })
-
+        
         function paginacion(vecindad) {
             vecindad++;
             $scope.botonera = [];
@@ -56,6 +58,66 @@ var miControlador = miModulo.controller(
                 }
             }
         }
+        promesasService.ajaxListCarrito()
+            .then(function successCallback(response) {
+                if (response.data.status != 200) {
+                    $scope.falloMensaje = response.data.message;
+                } else {
+                    $scope.status = response.data.status;
+                    $scope.pagina = response.data.message;
+                    if (response.data.message) {
+                        if (response.data.message.length == 0) {
+                            $scope.count = 0;
+                        } else {
+                            $scope.count = response.data.message.length;
+                        }
+                    } else {
+                        $scope.count = 0;
+                    }
+                }
+            }, function (response) {
+                $scope.mensaje = "Ha ocurrido un error";
+            });
+        /*Add carrito*/
+        $scope.add = function (id) {
+            cantidad = 1;
+            promesasService.ajaxAddCarrito(id, cantidad)
+                .then(function successCallback(response) {
+                    if (response.data.status != 200) {
+                        $scope.fallo = true;
+                        $scope.falloMensaje = response.data.response;
+                    } else {
+                        $scope.fallo = false;
+                        $scope.hecho = true;
+                        promesasService.ajaxListCarrito()
+                        .then(function successCallback(response) {
+                            if (response.data.status != 200) {
+                                $scope.falloMensaje = response.data.message;
+                            } else {     
+                                
+                                if(isEmpty(response.data.message)){
+                                    $scope.count=0;
+                                } else{
+                                    $scope.count = Object.keys(response.data.message).length;       
+                                }
+                                button = document.getElementsByName("addCarrito");
+                                button.className = 'animated bounce';
+                                                 
+                            }
+                        }, function (response) {
+                            $scope.mensaje = "Ha ocurrido un error";
+                        });
+                    }
+                    $scope.hecho = true;
+                })
+        }
 
+        function isEmpty(obj) {
+            for(var key in obj) {
+                if(obj.hasOwnProperty(key))
+                    return false;
+            }
+            return true;
+        };
     }
 )
