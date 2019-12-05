@@ -1,13 +1,13 @@
 var miControlador = miModulo.controller(
     "compraEditController",
 
-    function ($scope, $http, $routeParams, promesasService, auth,level) {
-        $scope.sessionLevel = level.data.message;
-        if (auth.data.status != 200) {
+    function ($scope, $http, $routeParams, promesasService, auth,$location) {
+        if (auth.data.status != 200 || auth.data.message.tipo_usuario_obj.id == 2) {
             $location.path('/login');
         } else {
             $scope.authStatus = auth.data.status;
-            $scope.authUsername = auth.data.message;
+            $scope.authUsername = auth.data.message.login;
+            $scope.authLevel =  auth.data.message.tipo_usuario_obj;
         }
 
         $scope.id = $routeParams.id;
@@ -22,8 +22,8 @@ var miControlador = miModulo.controller(
             .then(function (response) {
                 $scope.id = response.data.message.id;
                 $scope.cantidad = response.data.message.cantidad;
-                $scope.producto_obj = response.data.message.producto_obj.descripcion;
-                $scope.factura_obj = response.data.message.factura_obj.id;
+                $scope.producto_obj = response.data.message.producto_obj;
+                $scope.factura_obj = response.data.message.factura_obj;
             }, function () {
                 $scope.fallo = true;
             })
@@ -33,8 +33,8 @@ var miControlador = miModulo.controller(
             const datos = {
                 id: $routeParams.id,
                 cantidad: $scope.cantidad,
-                producto_obj: $scope.producto_obj.descripcion,
-                factura_obj: $scope.producto_obj.id,
+                producto_id: $scope.producto_obj.id,
+                factura_id: $scope.factura_obj.id,
             }
             var jsonToSend = {
                 data: JSON.stringify(datos)
@@ -66,15 +66,15 @@ var miControlador = miModulo.controller(
                 .then(function (response) {
                     $scope.id = response.data.message.id;
                     $scope.cantidad = response.data.message.cantidad;
-                    $scope.producto_obj = response.data.message.producto_obj.descripcion;
-                    $scope.factura_obj = response.data.message.factura_obj.id;
+                    $scope.producto_obj_descripcion = response.data.message.producto_obj.descripcion;
+                    $scope.factura_obj_id = response.data.message.factura_obj.id;
                 }, function (error) {
                     $scope.fallo = true;
                 });
         }
 
         $scope.cerrar = function () {
-            $location.path('/home/10/1');
+            $location.path('/home/12/1');
         };
 
         $scope.reset();

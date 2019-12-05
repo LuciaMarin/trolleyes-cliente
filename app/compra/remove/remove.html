@@ -1,6 +1,6 @@
 <ng-include src="'app/menu.html'"></ng-include>
 <div class="header shadow">
-    <h1><span class="font-weight-bold">Eliminar pedido</span></h1>
+    <h1><span class="font-weight-bold">&#9998; Eliminar pedido</span></h1>
 </div>
 <div class="container">
     <div class="row">
@@ -39,34 +39,34 @@
                 </div>
 
                 <br>
-                <p>¿Seguro que quiere elimnar el pedido?</p>
+                <p>¿Seguro que quieres eliminar el pedido?</p>
                 <div class="row">
                     <div class="col text-center">
-                        <button type="button" class="btn btn-primary" ng-click="remove()">Eliminar datos</button>
+                        <button type="button" class="btn btn-outline-dark" ng-click="remove()">Eliminar datos</button>
                     </div>
                 </div>
             </form>
             <div ng-show="!fallo&&hecho">
                 <div class="alert alert-success text-center" role="alert">
-                    <h2>El pedido se ha eliminado con éxito</h2>
-                    <button class="btn btn-primary" ng-click="cerrar()">Cerrar</button>
-                    <button class="btn btn-primary" ng-click="volver()">Volver</button>
+                    <h2>El pedido se ha eliminado con éxito.</h2>
+                    <button class="btn btn-outline-dark" ng-click="cerrar()">Cerrar</button>
+                    <button class="btn btn-outline-dark" ng-click="volver()">Volver</button>
                 </div>
             </div>
             <div ng-show="fallo&&hecho">
                 <div class="alert alert-danger text-center" role="alert">
-                    <h2>Ha ocurrido un error al eliminar el pedido</h2>
+                    <h2>Ha ocurrido un error al eliminar el pedido.</h2>
                     <p ng-show="falloMensaje!=''">{{falloMensaje}}</p>
-                    <button class="btn btn-primary" ng-click="cerrar()">Cerrar</button>
-                    <button class="btn btn-primary" ng-click="volver()">Volver</button>
+                    <button class="btn btn-outline-dark" ng-click="cerrar()">Cerrar</button>
+                    <button class="btn btn-outline-dark" ng-click="volver()">Volver</button>
                 </div>
             </div>
             <div ng-show="fallo&&!hecho">
                 <div class="alert alert-danger text-center" role="alert">
-                    <h2>Ha habido un error al recibir datos del pedido desde el servidor</h2>
+                    <h2>Ha ocurrido un error al recibir datos del pedido desde el servidor.</h2>
                     <p ng-show="falloMensaje!=''">{{falloMensaje}}</p>
-                    <button class="btn btn-primary" ng-click="cerrar()">Cerrar</button>
-                    <button class="btn btn-primary" ng-click="volver()">Volver</button>
+                    <button class="btn btn-outline-dark" ng-click="cerrar()">Cerrar</button>
+                    <button class="btn btn-outline-dark" ng-click="volver()">Volver</button>
                 </div>
             </div>
         </div>

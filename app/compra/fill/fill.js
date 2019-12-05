@@ -1,13 +1,12 @@
 var miControlador = miModulo.controller(
     "compraFillController",
-
-    function ($scope, promesasService, auth,level, $location) {
-        $scope.sessionLevel = level.data.message;
-        if (auth.data.status != 200) {
+    function ($scope, promesasService, auth, $location) {
+        if (auth.data.status != 200 || auth.data.message.tipo_usuario_obj.id == 2) {
             $location.path('/login');
         } else {
             $scope.authStatus = auth.data.status;
-            $scope.authUsername = auth.data.message;
+            $scope.authUsername = auth.data.message.login;
+            $scope.authLevel = auth.data.message.tipo_usuario_obj;
         }
 
         //--
@@ -39,7 +38,7 @@ var miControlador = miModulo.controller(
             window.history.back();
         };
         $scope.cerrar = function () {
-            $location.path('/home/10/1');
+            $location.path('/home/12/1');
         };
 
 

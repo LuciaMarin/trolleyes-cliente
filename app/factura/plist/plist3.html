@@ -1,6 +1,6 @@
 <ng-include src="'app/menu.html'"></ng-include>
 <div class="header shadow">
-    <h1><span class="font-weight-bold">&#128425; Lista de facturas</span></h1>
+    <h1><span class="font-weight-bold">&#128425; Mis facturas</span></h1>
 </div>
 <div class="container">
     <div class="row">
@@ -17,7 +17,7 @@
                 <nav aria-label="Registros por página">
                     <ul class="pagination float-right">
                         <li class="page-item" ng-class="{'active':(rppActual==r)}" ng-repeat="r in rppS">
-                            <a class="page-link" href="#!/factura/plist/{{r}}/{{ calcPage[$index] }}">{{r}}</a>
+                            <a class="page-link" href="#!/factura/plist/{{r}}/{{ calcPage[$index] }}/{{id_usuario}}/{{filter}}">{{r}}</a>
                         </li>
                     </ul>
                 </nav>
@@ -26,7 +26,7 @@
                         <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
                             ng-repeat="p in botonera track by $index">
                             <a class="page-link" ng-if="p != '...'"
-                                href="#!/factura/plist/{{ rppActual }}/{{ p }}">{{p}}</a>
+                                href="#!/factura/plist/{{ rppActual }}/{{ p }}/{{id_usuario}}/{{filter}}">{{p}}</a>
                             <span class="page-link" ng-if="p == '...'">{{ p }}</span>
                         </li>
                     </ul>
@@ -42,8 +42,9 @@
                                         class="btn btn-outline-dark" role="button" aria-pressed="true"><i
                                             class="fas fa-sort-down"></i></i></a>
                                 </div>
+                            </th>
                         </div>
-                        </th>
+                        
                         <div>
                             <th>Fecha <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <a href="#!/factura/plist/{{ rppActual }}/{{ paginaActual }}/fecha/asc"
@@ -53,8 +54,9 @@
                                         class="btn btn-outline-dark" role="button" aria-pressed="true"><i
                                             class="fas fa-sort-down"></i></i></a>
                                 </div>
+                            </th>
                         </div>
-                        </th>
+                        
                         <div>
                             <th>IVA <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <a href="#!/factura/plist/{{ rppActual }}/{{ paginaActual }}/iva/asc"
@@ -67,11 +69,11 @@
                             </th>
                         </div>
                         <div>
-                            <th>Usuario <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <a href="#!/factura/plist/{{ rppActual }}/{{ paginaActual }}/usuario_obj/asc"
+                            <th>Compras <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <a href="#!/factura/plist/{{ rppActual }}/{{ paginaActual }}/iva/asc"
                                         class="btn btn-outline-dark" role="button" aria-pressed="true"><i
                                             class="fas fa-sort-up"></i></i></a>
-                                    <a href="#!/factura/plist/{{ rppActual }}/{{ paginaActual }}/usuario_obj/desc"
+                                    <a href="#!/factura/plist/{{ rppActual }}/{{ paginaActual }}/iva/desc"
                                         class="btn btn-outline-dark" role="button" aria-pressed="true"><i
                                             class="fas fa-sort-down"></i></i></a>
                                 </div>
@@ -82,10 +84,8 @@
                     <tr ng-repeat="fila in pagina">
                         <td>{{fila.id}}</td>
                         <td>{{ fila.fecha | stringToDate | date : "dd/MM/yyyy"}}</td>
-                        <td>{{fila.iva}}</td>
-                        <td>
-                            <a href="#!/usuario/view/{{fila.usuario_obj.id}}">{{fila.usuario_obj.nombre}}
-                                {{fila.usuario_obj.apellido1}} {{fila.usuario_obj.apellido2}}</td>
+                        <td> {{fila.iva}}</td>
+                        <td><a href="#!/compra/plist/10/1/{{fila.id}}">{{fila.link_compra}}</a></td>
                         <td> 
                             <a href="#!/factura/view/{{fila.id}}"><i class="fa fa-eye"></i></a>
                             <a href="#!/factura/edit/{{fila.id}}"><i class="fa fa-edit"></i></a>
@@ -99,7 +99,7 @@
                         <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
                             ng-repeat="p in botonera track by $index">
                             <a class="page-link" ng-if="p != '...'"
-                                href="#!/factura/plist/{{ rppActual }}/{{ p }}">{{p}}</a>
+                                href="#!/factura/plist/{{ rppActual }}/{{ p }}/{{id_usuario}}/{{filter}}">{{p}}</a>
                             <span class="page-link" ng-if="p == '...'">{{ p }}</span>
                         </li>
                     </ul>

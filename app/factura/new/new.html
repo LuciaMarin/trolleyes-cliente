@@ -1,6 +1,6 @@
 <ng-include src="'app/menu.html'"></ng-include>
 <div class="header shadow">
-  <h1><span class="font-weight-bold"><i class="fas fa-file-invoice"></i> Nueva factura</span></h1>
+  <h1><span class="font-weight-bold">&#10133; Nueva factura</span></h1>
 </div>
 <div class="container">
   <div class="row">
@@ -15,7 +15,7 @@
                 ng-required="true"></input>
             </div>
             <div class=" invalid-feedback" ng-show="userForm.iva.$invalid">
-              El IVA no puede estar vacio.
+              El campo de IVA no puede estar vacio.
             </div>
           </div>
         </div>
@@ -38,7 +38,7 @@
                   max="100" ng-pattern="/^[1-9][0-9]?$|^100$/" ng-required="true" ng-model-options="{debounce: 1000}">
                 <div class="input-group-append">
                   <span class="input-group-text">
-                    <a href="tipousuario/view/{{usuario_obj.id}}">
+                    <a>
                       <span class="p-2 bd-highlight"><i class="fas fa-users fa-1x"></i></span>
                       Usuario: {{usuario_obj.nombre}}
                     </a>
@@ -62,23 +62,23 @@
         <br>
         <div class="row">
           <div class="col text-center">
-            <button type="button" class="btn btn-primary" ng-click="new()">Crear factura</button>
+            <button type="button" class="btn btn-outline-dark" ng-click="new()">Crear factura</button>
           </div>
         </div>
       </form>
       <div ng-show="!fallo&&hecho">
         <div class="alert alert-success text-center" role="alert">
           <h2>Se ha añadido una nueva factura.</h2>
-          <button class="btn btn-primary" ng-click="cerrar()">Cerrar</button>
-          <button class="btn btn-primary" ng-click="volver()">Volver</button>
+          <button class="btn btn-outline-dark" ng-click="cerrar()">Cerrar</button>
+          <button class="btn btn-outline-dark" ng-click="volver()">Volver</button>
         </div>
       </div>
       <div ng-show="fallo&&hecho">
         <div class="alert alert-danger text-center" role="alert">
-          <h2>Ha ocurrido un error al añadir la factura</h2>
+          <h2>Ha ocurrido un error al añadir la factura.</h2>
           <p ng-show="falloMensaje!=''">{{falloMensaje}}</p>
-          <button class="btn btn-primary" ng-click="cerrar()">Cerrar</button>
-          <button class="btn btn-primary" ng-click="volver()">Volver</button>
+          <button class="btn btn-outline-dark" ng-click="cerrar()">Cerrar</button>
+          <button class="btn btn-outline-dark" ng-click="volver()">Volver</button>
         </div>
       </div>
     </div>
