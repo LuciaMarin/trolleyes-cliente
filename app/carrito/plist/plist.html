@@ -1,6 +1,6 @@
 <ng-include src="'app/menu.html'"></ng-include>
 <div class="header shadow">
-    <h1><span class="font-weight-bold">Artículos en el carrito</span></h1>
+    <h1><span class="font-weight-bold">Artículos en el carrito <i class="fas fa-list"></i></span></h1>
 </div>
 <div class="container">
     <div class="row">
@@ -10,32 +10,45 @@
                     <tr>
                         <th>Imagen</th>
                         <th>Producto</th>
+                        <th>Tipo de producto</th>
                         <th>Cantidad</th>
                         <th>Precio Unitario</th>
                         <th>Eliminar</th>
                     </tr>
                     <tr ng-repeat="compra in pagina">
-             
+
                         <td><img width="150" height="100" ng-src={{compra.producto_obj.imagen}}></td>
                         <td>{{compra.producto_obj.descripcion}}</td>
+                        <td>{{compra.producto_obj.tipo_producto_obj.descripcion}}</td>
                         <td>{{compra.cantidad}}</td>
-                        <td>{{compra.producto_obj.precio}}</td>
-                        <th><a href="#!/carrito/remove/{{compra.producto_obj.id}}"><i class="fas fa-times"></i></a></th>
+                        <td>{{compra.producto_obj.precio}} €</td>
+                        <th><button ng-click="remove(compra.producto_obj.id)" class="btn btn-outline-info mt-2 ml-0"><i
+                                    class="fas fa-times"></i></a></button></th>
+                    </tr>
+                    <tr>
+                        <th colspan="3"></th>
+                        <th>Total</th>
+                        <th>{{total}} €</th>
                     </tr>
                 </table>
                 <div class="row">
                     <div class="col text-center">
-                        <button type="button" class="btn btn-primary" ng-click="buy()">Comprar</button>
+                        <button type="button" class="btn btn-outline-dark" ng-click="buy()">Comprar</button>
+                        <button type="button" class="btn btn-outline-dark" ng-click="empty()">Vaciar carrito</button>
+                        <button class="btn btn-outline-dark" ng-click="cerrar()">Seguir Comprando</button>
                     </div>
                 </div>
-                <div ng-show="!fallo&&hecho&&compraRealizada">
-                        <div class="alert alert-success text-center" role="alert">
-                          <h2>Compra realizada.</h2>
-                          <button class="btn btn-primary" ng-click="cerrar()">Cerrar</button>
-                          <button class="btn btn-primary" ng-click="volver()">Volver</button>
-                        </div>
-                 </div>
+            </div>
+            <div ng-show="fallo&&!hecho" class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                <strong>{{falloMensaje}} <a ng-show="authStatus != 200" href="#!/login" class="alert-link">Login.</a></strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+            <div ng-show="!fallo&&hecho" class="alert alert-success text-center animated fadeInUp" role="alert">
+                <h2>{{message}}</h2>
             </div>
         </div>
     </div>
+</div>
 </div>
