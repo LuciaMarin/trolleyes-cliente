@@ -12,8 +12,8 @@
       </li>
       <!--Mis facturas -->
       <li class="nav-item" ng-show="authStatus==200 && authLevel.id != 1"
-        ng-class="{'active':(controller=='facturaPlist3Controller')}">
-        <a class="nav-link" href="#!/factura/plist/10/1/{{authid}}"><i class="fas fa-file-invoice"></i> Mis facturas </a>
+      ng-class="{'active':(controller=='misFacturasController')}">
+      <a class="nav-link" href="./misFacturas/10/1"><i class="fas fa-file-invoice"></i> Mis facturas </a>
       </li>
       <!-- Productos -->
       <div class="dropdown" ng-show="authStatus==200 && authLevel.id == 1">
